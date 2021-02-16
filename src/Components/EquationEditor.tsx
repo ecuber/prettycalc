@@ -20,8 +20,8 @@ const EquationEditor: React.FC = () => {
             setEquation(mathField.latex())
           }}
           config={{
-            autoCommands: 'pi sqrt ln log',
-            autoOperatorNames: 'sin cos tan arcsin arccos arctan sec csc cot',
+            autoCommands: 'pi sqrt',
+            autoOperatorNames: 'sin cos tan arcsin arccos arctan sec csc cot ln log',
             autoSubscriptNumerals: false
           }}
         />

@@ -9,7 +9,7 @@ const InputArea: React.FC = () => (
     <Card className='mb-5' Content={
       <div className='d-flex flex-auto'>
          <InputLabel control={<EquationEditor/>} label='Equation:' labelPosition='left'/>
-         <InputLabel className='ml-xs-0 ml-sm-2 ml-xl-5' control={<PointInput x={0} y={0}/>} label='Initial Condition:' labelPosition='left'/>
+         <InputLabel className='ml-xs-2 ml-sm-2 ml-md-5' control={<PointInput x={0} y={0}/>} label='Initial Condition:' labelPosition='left'/>
       </div>
     }/>
     <RoundButton
