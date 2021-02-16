@@ -1,2 +1,2 @@
 # euler
-A visualization of Euler's method for solving differentiable equations.
+A visualization of Euler's method for solving differential equations.
