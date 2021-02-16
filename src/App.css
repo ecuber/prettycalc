@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('http://fontlibrary.org/face/symbola');
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.section1 {
+  background-color: rgb(243, 244, 245);
+}
+
+.inputrow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.label {
+  font-size: 1.5rem;
+  margin: 0;
+  margin-block-end: 0;
+}
+
+.mq-editable-field {
+  padding: 0.2rem 0.2rem 0 0.2rem !important;
+  border: 1px solid #555555 !important;
+}
+
+.mq-math-mode {
+  font-size: 150% !important;
+  line-height: 1 !important;
+  border: none !important;
+}
+
+
+.ninput {
+  max-width: min-content;
+}
+
+.input {
+  border-radius: 0.2rem;
+}
