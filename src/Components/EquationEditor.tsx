@@ -50,7 +50,7 @@ class EquationEditor extends React.Component<EqProps, { equation: string, valid:
               autoSubscriptNumerals: false,
               supSubsRequireOperand: true,
               sumStartsWithNEquals: true,
-              maxDepth: 15
+              maxDepth: 10
             }}
           />
         </Col>

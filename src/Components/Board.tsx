@@ -5,15 +5,15 @@ import evaluatex from '../util/evaluatex/evaluatex'
 const LENGTH = 0.35
 const SPACING = 0.6
 
-class Board extends React.Component<{ equation: string, x: string, y: string }> {
+interface BoardData { equation: string, x: string, y: string }
+
+class Board extends React.Component<BoardData, BoardData> {
+  state = {
+    ...this.props
+  }
+
   // brd has type https://jsxgraph.uni-bayreuth.de/docs/symbols/JXG.Board.html
   logicJs (brd: any): void {
-    brd.suspendUpdate()
-
-    // brd.defaultAxes.x.defaultTicks.setAttribute({ majorHeight: -1 })
-    // brd.defaultAxes.y.defaultTicks.setAttribute({ majorHeight: -1 })
-    const delta = brd.create('slider', [[-2.5, 3.25], [-1.5, 3.25], [0.01, 0.1, 1.0]])
-
     const start = brd.create('point', [evaluatex(this.props.x)(), evaluatex(this.props.y)()], { withLabel: false, color: 'gold' })
 
     // Rendersslope field
@@ -25,21 +25,32 @@ class Board extends React.Component<{ equation: string, x: string, y: string }> 
         brd.create('arrow', [[x, y], [x + LENGTH * Math.cos(angle), y + LENGTH * Math.sin(angle)]], { color: 'MidnightBlue', opacity: 0.3 })
       }
     }
-    brd.unsuspendUpdate()
+
+    brd.prepareUpdate()
   }
 
   render (): JSX.Element {
-    return (
-      <JXGBoard
-        logic={this.logicJs.bind(this)}
-        boardAttributes={{ axis: true, showCopyright: false, screenshot: true, boundingBox: [-5, 5, 5, -5] }}
-        style={{
-          border: '1px solid black',
-          borderRadius: '5px',
-          axis: false
-        }}
+    const board = <JXGBoard
+      key={Math.random().toString()}
+      logic={this.logicJs.bind(this)}
+      boardAttributes={{
+        axis: true,
+        defaultAxes: {
+          y: { ticks: { visible: true, majorHeight: 5 } },
+          x: { ticks: { visible: true, majorHeight: 5 } }
+        },
+        showCopyright: false,
+        screenshot: true,
+        boundingBox: [-4.5, 4.5, 4.5, -4.5]
+      }}
+      style={{
+        border: '1px solid black',
+        borderRadius: '5px',
+        axis: false,
+        showReload: true
+      }}
     />
-    )
+    return board
   }
 }
 

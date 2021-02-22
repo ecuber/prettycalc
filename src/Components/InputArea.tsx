@@ -2,9 +2,9 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import EquationEditor from './EquationEditor'
 import PointInput from './PointInput'
-import { InputLabel, Card, icons, RoundButton } from './visly'
+import { InputLabel, Card, RoundButton, icons } from './visly'
 
-interface InputProps { equation: string, x: string, y: string, onUpdate: (target: { name: string, value: string }) => void }
+interface InputProps { equation: string, x: string, y: string, onUpdate: (props: { equation: string, x: string, y: string }) => void }
 interface InputState { equation: string, valid: boolean, x: string, y: string }
 
 class InputArea extends React.Component<InputProps, InputState> {
@@ -19,21 +19,36 @@ class InputArea extends React.Component<InputProps, InputState> {
     }
   }
 
+  update (target: { name: string, value: string }): void {
+    console.log('input update attempt')
+    const state: any = { [target.name]: target.value }
+    this.setState(state)
+  }
+
   render (): JSX.Element {
     const state = this.state
     return (
       <Container className='justify-content-center'>
-        <Card className='' Content={
+        <Card className='mb-3' Content={
           <div className='d-flex flex-row'>
-             <InputLabel control={<EquationEditor onChange={this.props.onUpdate} equation={state.equation}/>} label='Equation:' labelPosition='left'/>
-             <InputLabel className='ml-xs-2 ml-sm-2 ml-md-5' control={<PointInput onChange={this.props.onUpdate} x={state.x} y={state.y}/>} label='Initial Condition:' labelPosition='left'/>
+             <InputLabel control={<EquationEditor onChange={this.update.bind(this)} equation={state.equation}/>} label='Equation:' labelPosition='left'/>
+             <InputLabel className='ml-xs-2 ml-sm-2 ml-md-5' control={<PointInput onChange={this.update.bind(this)} x={state.x} y={state.y}/>} label='Initial Condition:' labelPosition='left'/>
           </div>
         }/>
-        {/* <RoundButton
+        {
+          this.state.valid
+            ? <RoundButton
           className='m-auto'
-          onPress={() => {}}
+          onPress={() => {
+            if (this.state.valid) {
+              console.log('woo')
+              this.props.onUpdate({ equation: this.state.equation, x: this.state.x, y: this.state.y })
+            }
+          }}
           icon={icons.checkmark}
-        /> */}
+        />
+            : <RoundButton className='m-auto' icon={icons.checkmark} disabled/>
+        }
       </Container>
     )
   }

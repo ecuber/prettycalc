@@ -37,6 +37,9 @@ class EquationEditor extends React.Component<Num, { value: string, floatValue: n
             isValid = false
           }
           this.setState({ valid: isValid })
+          if (isValid) {
+            this.props.onChange({ name: this.props.name, value: mathField.latex() })
+          }
         }
       }}
     />
