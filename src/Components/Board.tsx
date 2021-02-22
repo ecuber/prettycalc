@@ -1,6 +1,6 @@
 import React from 'react'
 import JXGBoard from '@sswatson/jsxgraph-react-js'
-import evaluatex from '../util/evaluatex/evaluatex'
+import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
 
 const LENGTH = 0.35
 const SPACING = 0.6

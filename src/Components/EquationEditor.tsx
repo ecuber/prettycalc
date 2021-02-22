@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticMathField, EditableMathField, addStyles } from 'react-mathquill'
-import evaluatex from '../util/evaluatex/evaluatex'
+import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 

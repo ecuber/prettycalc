@@ -1,6 +1,6 @@
 import React from 'react'
 import { EditableMathField, addStyles } from 'react-mathquill'
-import evaluatex from '../util/evaluatex/evaluatex'
+import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
 
 addStyles()
 

@@ -1147,6 +1147,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
+"@ecuber/evaluatex@https://github.com/ecuber/evaluatex.git":
+  version "2.2.1"
+  resolved "https://github.com/ecuber/evaluatex.git#38c326ecbebbff752a392a05dac1ff21cf559890"
+
 "@eslint/eslintrc@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.3.0.tgz#d736d6963d7003b6514e6324bec9c602ac340318"
@@ -3976,6 +3980,13 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, can
   version "1.0.30001185"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001185.tgz#3482a407d261da04393e2f0d61eefbc53be43b95"
   integrity sha512-Fpi4kVNtNvJ15H0F6vwmXtb3tukv3Zg3qhKkOGUq7KJ1J6b9kf4dnNgtEAFXhRsJo0gNj9W60+wBvn0JcTvdTg==
+
+canvas@1.3.x:
+  version "1.3.16"
+  resolved "https://registry.yarnpkg.com/canvas/-/canvas-1.3.16.tgz#7ebde8c54d098fb59b9b598f94c908f6e939147d"
+  integrity sha1-fr3oxU0Jj7Wbm1mPlMkI9uk5FH0=
+  dependencies:
+    nan "^2.3.2"
 
 canvas@^2.6.0:
   version "2.6.1"
@@ -7811,6 +7822,22 @@ jsprim@^1.2.2:
     array-includes "^3.1.2"
     object.assign "^4.1.2"
 
+jsxgraph-react-js@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/jsxgraph-react-js/-/jsxgraph-react-js-1.0.4.tgz#b7855ac314297fc8c7abfb37be85a9b0eaf98326"
+  integrity sha512-n+FBnEMwwCaywp7ROn49JwZJv8TFy7nQbXnk/LKlnS2Z7OLGOLrZjBbHwZg/pPCqTp1zqMBC7hg7LFlZXF076w==
+  dependencies:
+    jsxgraph "^0.99.7"
+
+jsxgraph@^0.99.7:
+  version "0.99.7"
+  resolved "https://registry.yarnpkg.com/jsxgraph/-/jsxgraph-0.99.7.tgz#57e4acef275e9376e92bdd6672834d97654de256"
+  integrity sha1-V+Ss7ydek3bpK91mcoNNl2VN4lY=
+  dependencies:
+    requirejs "2.3.x"
+  optionalDependencies:
+    canvas "1.3.x"
+
 jsxgraph@^1.1.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/jsxgraph/-/jsxgraph-1.2.1.tgz#94f528325a5b7d7f1802e9c54632db09dd39e776"
@@ -8402,7 +8429,7 @@ multicast-dns@^6.0.1:
     dns-packet "^1.3.1"
     thunky "^1.0.2"
 
-nan@^2.12.1, nan@^2.14.0:
+nan@^2.12.1, nan@^2.14.0, nan@^2.3.2:
   version "2.14.2"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.2.tgz#f5376400695168f4cc694ac9393d0c9585eeea19"
   integrity sha512-M2ufzIiINKCuDfBSAUr1vWQ+vuVcA9kqx8JJUsbQi6yf1uGRyb7HfpdfUr5qLXf3B/t8dPvcjhKMmlfnP47EzQ==
@@ -10590,7 +10617,7 @@ require-main-filename@^2.0.0:
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-2.0.0.tgz#d0b329ecc7cc0f61649f62215be69af54aa8989b"
   integrity sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==
 
-requirejs@^2.3.6:
+requirejs@2.3.x, requirejs@^2.3.6:
   version "2.3.6"
   resolved "https://registry.yarnpkg.com/requirejs/-/requirejs-2.3.6.tgz#e5093d9601c2829251258c0b9445d4d19fa9e7c9"
   integrity sha512-ipEzlWQe6RK3jkzikgCupiTbTvm4S0/CAU5GlgptkN5SO6F3u0UD0K18wy6ErDqiCyP4J4YYe1HuAShvsxePLg==

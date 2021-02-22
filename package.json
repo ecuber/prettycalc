@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ecuber/evaluatex": "https://github.com/ecuber/evaluatex.git",
     "@sswatson/jsxgraph-react-js": "https://github.com/ecuber/jsxgraph-react-js",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -51,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-syntax-class-properties": "^7.12.13",
     "@typescript-eslint/eslint-plugin": "4",
     "@typescript-eslint/parser": "^4.4.0",
     "eslint": "^7.12.1",
