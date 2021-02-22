@@ -10,6 +10,7 @@ interface AppState {
   equation: string
   x: string
   y: string
+  delta: number
 }
 
 class App extends React.Component<{}, AppState> {
@@ -18,7 +19,8 @@ class App extends React.Component<{}, AppState> {
     this.state = {
       equation: 'x^2+y^2',
       x: '1',
-      y: '0'
+      y: '0',
+      delta: 0.1
     }
   }
 

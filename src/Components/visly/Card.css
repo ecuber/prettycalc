@@ -21,6 +21,7 @@
   align-content: flex-start;
   justify-content: center;
   box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.16);
+  overflow: auto;
   border-radius: 8px;
   padding: 16px;
 }
@@ -33,7 +34,7 @@
 }
 .__visly_scope_4FsW7UYFoD_2Fz35Fjkvs .__visly_scope_4FsW7UYFoD_QehWRvvuFP {
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: stretch;
   align-content: flex-start;
   justify-content: flex-start;
