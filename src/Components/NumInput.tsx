@@ -7,16 +7,15 @@ addStyles()
 interface Num {
   value: string
   name: string
-  onChange: (target: { name: string, value: string }) => void
+  onChange: (name: string, updates: { value: string, valid: string }) => void
 }
 
-class EquationEditor extends React.Component<Num, { value: string, floatValue: number, valid: boolean }> {
+class EquationEditor extends React.Component<Num, { value: string, valid: boolean }> {
   constructor (props: Num) {
     super(props)
     this.state = {
       value: props.value,
-      valid: true,
-      floatValue: parseFloat(props.value)
+      valid: true
     }
   }
 
@@ -28,18 +27,20 @@ class EquationEditor extends React.Component<Num, { value: string, floatValue: n
       latex={this.state.value}
       onChange={(mathField) => {
         this.setState({ value: mathField.latex() })
-        this.props.onChange({ name: this.props.name, value: mathField.latex() })
         if (mathField.latex() !== '') {
           let isValid = true
           try {
-            this.setState({ floatValue: evaluatex(mathField.latex(), {}, { latex: true })() })
+            evaluatex(mathField.latex(), {}, { latex: true })()
           } catch (e) {
             isValid = false
           }
-          this.setState({ valid: isValid })
           if (isValid) {
-            this.props.onChange({ name: this.props.name, value: mathField.latex() })
+            this.props.onChange(this.props.name, { value: mathField.latex(), valid: 'true' })
+          } else {
+            this.props.onChange(this.props.name, { value: '', valid: 'false' })
           }
+
+          this.setState({ valid: isValid })
         }
       }}
     />

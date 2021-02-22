@@ -16,15 +16,13 @@ class App extends React.Component<{}, AppState> {
   constructor (props: any) {
     super(props)
     this.state = {
-      equation: '\\frac{x}{x^2+y^2}',
+      equation: 'x^2+y^2',
       x: '1',
       y: '0'
     }
   }
 
   onUpdate (props: AppState): void {
-    // const formatted = formatNum(target.value)
-    console.log(props)
     this.setState(props)
   }
 
@@ -38,7 +36,7 @@ class App extends React.Component<{}, AppState> {
       </section>
       <img src={wave} style={{ pointerEvents: 'none', userSelect: 'none', display: 'block', margin: 0, padding: 0 }}></img>
       <Container>
-        <Board equation={state.equation} x={state.x} y={state.y}/>
+        <Board equation={state.equation} delta={0.5} x={state.x} y={state.y}/>
       </Container>
     </div>
     )

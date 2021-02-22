@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 
 addStyles()
 
-interface EqProps { equation: string, onChange: (target: {name: string, value: string}) => void }
+interface EqProps { equation: string, onChange: (name: string, updates: { value?: string, valid: string }) => void }
 
 class EquationEditor extends React.Component<EqProps, { equation: string, valid: boolean }> {
   constructor (props: EqProps) {
@@ -35,13 +35,15 @@ class EquationEditor extends React.Component<EqProps, { equation: string, valid:
               try {
                 evaluatex(mathField.latex(), { x: 0, y: 0 }, { latex: true })()
               } catch (e) {
-                console.error(e)
+                console.log('invalid expression')
                 isValid = false
               }
               // console.log(this.formatTex(mathField.latex()))
               this.setState({ equation: mathField.latex(), valid: isValid })
               if (isValid) {
-                this.props.onChange({ name: 'equation', value: mathField.latex() })
+                this.props.onChange('equation', { value: mathField.latex(), valid: 'true' })
+              } else {
+                this.props.onChange('equation', { valid: 'false' })
               }
             }}
             config={{

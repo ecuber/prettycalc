@@ -5,49 +5,59 @@ import PointInput from './PointInput'
 import { InputLabel, Card, RoundButton, icons } from './visly'
 
 interface InputProps { equation: string, x: string, y: string, onUpdate: (props: { equation: string, x: string, y: string }) => void }
-interface InputState { equation: string, valid: boolean, x: string, y: string }
+interface InputState { equation: { valid: string, value: string }, x: { valid: string, value: string }, y: { valid: string, value: string } }
 
 class InputArea extends React.Component<InputProps, InputState> {
   constructor (props: InputProps) {
     super(props)
     this.state = {
-      equation: this.props.equation,
-      valid: true,
-      x: this.props.x,
-      y: this.props.y
-
+      equation: {
+        valid: 'true',
+        value: this.props.equation
+      },
+      x: {
+        valid: 'true',
+        value: this.props.x
+      },
+      y: {
+        valid: 'true',
+        value: this.props.y
+      }
     }
   }
 
-  update (target: { name: string, value: string }): void {
-    console.log('input update attempt')
-    const state: any = { [target.name]: target.value }
+  update (name: string, updates: { value?: string, valid: string }): void {
+    const state: any = { [name]: updates }
     this.setState(state)
+  }
+
+  isValid (): boolean {
+    const valids = Object.keys(this.state).map(key => {
+      return this.state[key as keyof InputState].valid === 'true'
+    })
+    return !valids.includes(false)
   }
 
   render (): JSX.Element {
     const state = this.state
     return (
       <Container className='justify-content-center'>
-        <Card className='mb-3' Content={
-          <div className='d-flex flex-row'>
-             <InputLabel control={<EquationEditor onChange={this.update.bind(this)} equation={state.equation}/>} label='Equation:' labelPosition='left'/>
-             <InputLabel className='ml-xs-2 ml-sm-2 ml-md-5' control={<PointInput onChange={this.update.bind(this)} x={state.x} y={state.y}/>} label='Initial Condition:' labelPosition='left'/>
+        <Card className='mb-4' Content={
+          <div className='d-flex flex-column flex-md-row '>
+             <InputLabel control={<EquationEditor onChange={this.update.bind(this)} equation={state.equation.value}/>} label='Equation:' labelPosition='left'/>
+             <InputLabel className='ml-xs-2 ml-sm-2 ml-md-5' control={<PointInput onChange={this.update.bind(this)} x={state.x.value} y={state.y.value}/>} label='Initial Condition:' labelPosition='left'/>
           </div>
         }/>
         {
-          this.state.valid
+          this.isValid.bind(this)()
             ? <RoundButton
           className='m-auto'
           onPress={() => {
-            if (this.state.valid) {
-              console.log('woo')
-              this.props.onUpdate({ equation: this.state.equation, x: this.state.x, y: this.state.y })
-            }
+            this.props.onUpdate({ equation: this.state.equation.value, x: this.state.x.value, y: this.state.y.value })
           }}
           icon={icons.checkmark}
         />
-            : <RoundButton className='m-auto' icon={icons.checkmark} disabled/>
+            : <RoundButton className='m-auto' disabled={true}/>
         }
       </Container>
     )

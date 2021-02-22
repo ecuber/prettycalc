@@ -1,32 +1,29 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import React from 'react'
 import JXGBoard from '@sswatson/jsxgraph-react-js'
 import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
 
-const LENGTH = 0.35
+const LENGTH = 0.4
 const SPACING = 0.6
 
-interface BoardData { equation: string, x: string, y: string }
+interface BoardData { equation: string, x: string, y: string, delta: number }
 
-class Board extends React.Component<BoardData, BoardData> {
-  state = {
-    ...this.props
-  }
-
+class Board extends React.Component<BoardData> {
   // brd has type https://jsxgraph.uni-bayreuth.de/docs/symbols/JXG.Board.html
   logicJs (brd: any): void {
-    const start = brd.create('point', [evaluatex(this.props.x)(), evaluatex(this.props.y)()], { withLabel: false, color: 'gold' })
+    const start = brd.create('point', [evaluatex(this.props.x)(), evaluatex(this.props.y)()], { withLabel: false, color: 'gold', fixed: true })
 
-    // Rendersslope field
-    for (let x = -10; x < 10; x += SPACING) {
+    // Renders slope field
+    for (let x = Math.floor(start.X() - 10); x < start.X() + 10; x += SPACING) {
       for (let y = -10; y < 10; y += SPACING) {
         const slope = evaluatex(this.props.equation)({ x, y })
         // console.log(slope)
         const angle = Math.atan(slope)
-        brd.create('arrow', [[x, y], [x + LENGTH * Math.cos(angle), y + LENGTH * Math.sin(angle)]], { color: 'MidnightBlue', opacity: 0.3 })
+        brd.create('arrow', [[x, y], [x + LENGTH * Math.cos(angle), y + LENGTH * Math.sin(angle)]], { color: 'MidnightBlue', opacity: 0.3, fixed: true })
       }
     }
 
-    brd.prepareUpdate()
+    // Set up Euler method points
   }
 
   render (): JSX.Element {
