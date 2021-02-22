@@ -1,2 +1,1 @@
-declare module 'evaluatex'
-declare module 'evaluatex/dist/evaluatex'
+declare module '@sswatson/jsxgraph-react-js'
