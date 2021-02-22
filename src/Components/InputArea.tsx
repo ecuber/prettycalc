@@ -13,7 +13,7 @@ class InputArea extends React.Component<InputProps, InputState> {
     super(props)
     this.state = {
       delta: {
-        value: 0.1,
+        value: 0.4,
         valid: 'true'
       },
       equation: {
