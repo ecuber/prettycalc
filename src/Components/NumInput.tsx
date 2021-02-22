@@ -1,30 +1,47 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { EditableMathField, addStyles } from 'react-mathquill'
-import evaluatex from 'evaluatex/dist/evaluatex'
+import evaluatex from '../util/evaluatex/evaluatex'
 
 addStyles()
 
-const NumInput: React.FC<{value: string}> = (props: {value: string}) => {
-  const [value, setValue] = useState(props.value)
-  const [valid, setValid] = useState(true)
+interface Num {
+  value: string
+  name: string
+  onChange: (target: { name: string, value: string }) => void
+}
 
-  return (
-    <EditableMathField
+class EquationEditor extends React.Component<Num, { value: string, floatValue: number, valid: boolean }> {
+  constructor (props: Num) {
+    super(props)
+    this.state = {
+      value: props.value,
+      valid: true,
+      floatValue: parseFloat(props.value)
+    }
+  }
+
+  render (): JSX.Element {
+    return (
+      <EditableMathField
+      style={this.state.valid ? { transition: 'outline 0.5s ease-in-out' } : { transition: 'outline 0.5s ease-in-out', outline: '2px solid #EB8088' }}
       className='input'
-      latex={value}
+      latex={this.state.value}
       onChange={(mathField) => {
-        setValue(mathField.latex())
+        this.setState({ value: mathField.latex() })
+        this.props.onChange({ name: this.props.name, value: mathField.latex() })
         if (mathField.latex() !== '') {
+          let isValid = true
           try {
-            const testEval = evaluatex(mathField.latex(), {}, { latex: true })()
-            setValid(!isNaN(testEval))
+            this.setState({ floatValue: evaluatex(mathField.latex(), {}, { latex: true })() })
           } catch (e) {
-            setValid(false)
+            isValid = false
           }
+          this.setState({ valid: isValid })
         }
       }}
     />
-  )
+    )
+  }
 }
 
-export default NumInput
+export default EquationEditor

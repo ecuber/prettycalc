@@ -5,42 +5,27 @@ import NumInput from './NumInput'
 addStyles()
 
 interface Point {
-  x: number
-  y: number
+  onChange: (target: {name: string, value: string}) => void
+  x: string
+  y: string
 }
 
 class PointInput extends React.Component<Point, any> {
-  constructor (props: Point) {
-    super(props)
-    this.state = {
-      x: this.props.x,
-      y: this.props.y
-    }
-
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange (event: any): void {
-    const target = event.target
-    // const formatted = formatNum(target.value)
-    if (!isNaN(parseFloat(target.value))) {
-      this.setState({
-        [target.name]: target.value
-      })
-    }
+  handleChange (target: { name: string, value: string }): void {
+    this.props.onChange({ name: target.name, value: target.value })
   }
 
   render (): JSX.Element {
     return (
       <div className='inputrow'>
-        <StaticMathField>
+        <StaticMathField style={{ margin: 0, padding: 0 }}>
           {'('}
         </StaticMathField>
-        <NumInput value={'1'}/>
+        <NumInput onChange={this.handleChange.bind(this)} name='x' value={'1'}/>
         <StaticMathField>
           {','}
         </StaticMathField>
-        <NumInput value={'0'}/>
+        <NumInput onChange={this.handleChange.bind(this)} name='y' value={'0'}/>
         <StaticMathField>
           {')'}
         </StaticMathField>
