@@ -7,7 +7,7 @@
 .__visly_scope_SJo7zQ8K5D_slider-root
   .__visly_scope_SJo7zQ8K5D_slider-track-layer {
   width: 100%;
-  min-width: 60px;
+  min-width: 100px;
   height: 8px;
   flex-shrink: 1;
   background-color: #dedede;
@@ -25,8 +25,8 @@
 }
 .__visly_scope_SJo7zQ8K5D_slider-root
   .__visly_scope_SJo7zQ8K5D_slider-thumb-layer {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   border-color: transparent;
   border-style: solid;
   background-color: #fff;

@@ -5,7 +5,7 @@ import EquationEditor from './EquationEditor'
 import PointInput from './PointInput'
 import { InputLabel, Card, RoundButton, icons, Slider, SliderValue, CompLabel } from './visly'
 
-interface InputProps { equation: string, x: string, y: string, onUpdate: (props: { equation: string, x: string, y: string, delta: number }) => void }
+interface InputProps { delta: number, equation: string, x: string, y: string, onUpdate: (props: { equation: string, x: string, y: string, delta: number }) => void }
 interface InputState { delta: { value: number, valid: string }, equation: { valid: string, value: string }, x: { valid: string, value: string }, y: { valid: string, value: string } }
 
 class InputArea extends React.Component<InputProps, InputState> {
@@ -13,7 +13,7 @@ class InputArea extends React.Component<InputProps, InputState> {
     super(props)
     this.state = {
       delta: {
-        value: 0.4,
+        value: this.props.delta,
         valid: 'true'
       },
       equation: {
@@ -49,7 +49,7 @@ class InputArea extends React.Component<InputProps, InputState> {
     const state = this.state
     return (
       <Container className='justify-content-center'>
-        <Card className='w-75 mx-auto mb-5' Content={
+        <Card className='inputcard mx-auto mb-5' Content={
           <div className=' d-flex flex-column flex-lg-row '>
              <InputLabel control={<EquationEditor onChange={this.update.bind(this)} equation={state.equation.value}/>} label='Equation:' labelPosition='left'/>
              <InputLabel className='ml-0 ml-lg-3 ml-xl-5 mt-3 my-lg-0' control={<PointInput onChange={this.update.bind(this)} x={state.x.value} y={state.y.value}/>} label='Initial Condition:' labelPosition='left'/>
@@ -59,7 +59,7 @@ class InputArea extends React.Component<InputProps, InputState> {
                 onChange={(x) => { this.setState({ delta: { value: x, valid: 'true' } }) }}/>
                }/>
               }
-              complabel={<StaticMathField>{'\\Delta x:'}</StaticMathField>}/>
+              complabel={<StaticMathField>{'\\Delta x:'}</StaticMathField>} label='delta x'/>
           </div>
         }/>
         {

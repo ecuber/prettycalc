@@ -2,7 +2,6 @@
 import React from 'react'
 import JXGBoard from '@sswatson/jsxgraph-react-js'
 import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
-import { deflate } from 'zlib'
 
 const LENGTH = 0.4
 const SPACING = 0.6

@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export const dimensions: {
+  bigger: string;
   sizeMedium: string;
   sizeSmall: string;
   sizeXlarge: string;

@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export const dimensions = {
+  bigger: "80px",
   sizeMedium: "16px",
   sizeSmall: "8px",
   sizeXlarge: "40px",

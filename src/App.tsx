@@ -20,7 +20,7 @@ class App extends React.Component<{}, AppState> {
       equation: 'x^2+y^2',
       x: '1',
       y: '0',
-      delta: 0.4
+      delta: 0.3
     }
   }
 
@@ -34,7 +34,7 @@ class App extends React.Component<{}, AppState> {
       <div className='App'>
       <section className='section1'>
         <Header/>
-        <InputArea onUpdate={this.onUpdate.bind(this)} equation={state.equation} x={state.x} y={state.y}/>
+        <InputArea delta={state.delta} onUpdate={this.onUpdate.bind(this)} equation={state.equation} x={state.x} y={state.y}/>
       </section>
       <img src={wave} style={{ pointerEvents: 'none', userSelect: 'none', display: 'block', margin: 0, padding: 0 }}></img>
       <Container>
