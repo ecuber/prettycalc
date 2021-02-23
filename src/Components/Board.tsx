@@ -33,11 +33,10 @@ class Board extends React.Component<BoardData> {
     let x = start.X()
     let y = start.Y()
     let i = 0
-    while (i < 12) {
-      console.log(typeof y)
+    while (i < 20) {
       x += delta
       const deltay = delta * evaluatex(this.props.equation)({ x, y })
-      y += deltay
+      y += deltay > 200 * Math.pow(10, 200) ? 0 : deltay
       brd.create('point', [x, y], { color: '#005377', fixed: true, withLabel: false })
       i++
     }
@@ -46,7 +45,7 @@ class Board extends React.Component<BoardData> {
     while (i > 0) {
       x -= delta
       const deltay = delta * evaluatex(this.props.equation)({ x, y })
-      y -= deltay
+      y -= deltay > 200 * Math.pow(10, 200) ? 0 : deltay
       brd.create('point', [x, y], { color: '#005377', fixed: true, withLabel: false })
       i--
     }
