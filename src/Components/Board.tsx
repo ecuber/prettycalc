@@ -6,7 +6,7 @@ import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
 const LENGTH = 0.4
 const SPACING = 0.6
 
-interface BoardData { equation: string, x: string, y: string, delta: number }
+interface BoardData { className: string, equation: string, x: string, y: string, delta: number }
 
 class Board extends React.Component<BoardData> {
   // brd has type https://jsxgraph.uni-bayreuth.de/docs/symbols/JXG.Board.html
@@ -21,7 +21,7 @@ class Board extends React.Component<BoardData> {
         const slope = evaluatex(this.props.equation)({ x, y })
         // console.log(slope)
         const angle = Math.atan(slope)
-        brd.create('arrow', [[x, y], [x + LENGTH * Math.cos(angle), y + LENGTH * Math.sin(angle)]], { color: '#052F5F', opacity: 0.3, fixed: true })
+        brd.create('arrow', [[x, y], [x + LENGTH * Math.cos(angle), y + LENGTH * Math.sin(angle)]], { color: '#052F5F', opacity: 0.2, fixed: true })
       }
     }
 
@@ -67,8 +67,8 @@ class Board extends React.Component<BoardData> {
       style={{
         border: '1px solid black',
         borderRadius: '5px',
-        axis: false,
-        showReload: true
+        showReload: true,
+        margin: 'auto'
       }}
     />
     return board

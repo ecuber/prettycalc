@@ -49,6 +49,7 @@ class EquationEditor extends React.Component<EqProps, { equation: string, valid:
             config={{
               autoCommands: 'pi',
               autoOperatorNames: 'sin cos tan sec arctan arccos arcsin csc cot ln log',
+              spaceBehavesLikeTab: true,
               autoSubscriptNumerals: false,
               supSubsRequireOperand: true,
               sumStartsWithNEquals: true,
