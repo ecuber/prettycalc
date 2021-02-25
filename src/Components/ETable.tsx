@@ -32,7 +32,7 @@ class ETable extends React.Component<Props, { data: Data[]}> {
     let i = 0
     let x = fx
     let y = fy
-    while (i < 1 / eq.delta) {
+    while (i <= 1 / eq.delta) {
       x = parseFloat((i === 0 ? x : x + delta).toFixed(3))
       const dydx = parseFloat((slope({ x, y }).toFixed(3)))
       y = parseFloat((i === 0 ? y : dydx * delta + arr[i - 1].y).toFixed(3))
