@@ -36,7 +36,8 @@ class ETable extends React.Component<Props, { data: Data[]}> {
       x = parseFloat((i === 0 ? x : x + delta).toFixed(3))
       const dydx = parseFloat((slope({ x, y }).toFixed(3)))
       y = parseFloat((i === 0 ? y : dydx * delta + arr[i - 1].y).toFixed(3))
-      arr.push({ x, y, delta, slope: dydx, n: i + 1, dy: parseFloat((dydx * delta).toFixed(3)) })
+      const nextslope = parseFloat((slope({ x: x + delta, y }).toFixed(3)))
+      arr.push({ x, y, delta, slope: dydx, n: i + 1, dy: parseFloat((nextslope * delta).toFixed(3)) })
       i++
     }
     return arr
