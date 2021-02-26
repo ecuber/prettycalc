@@ -3,7 +3,7 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 # EulerCalc
-EulerCalc is a visualization of Euler's Method for solving differential equations when an initial value is. This project was inspired by a manipulative made by [Sam Watson](https://github.com/sswatson) with his website, [Prismia](https://prismia.chat).
+EulerCalc is a visualization of Euler's Method for solving differential equations when an initial value is given. This project was inspired by a manipulative made by [Sam Watson](https://github.com/sswatson) with his website, [Prismia](https://prismia.chat).
 
 The master branch of this repository is deployed at https://eulercalc.netlify.app/.
 
