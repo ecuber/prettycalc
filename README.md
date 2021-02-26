@@ -5,16 +5,16 @@
 # EulerCalc
 EulerCalc is a visualization of Euler's Method for solving differential equations when an initial value is. This project was inspired by a manipulative made by [Sam Watson](https://github.com/sswatson) with his website, [Prismia](https://prismia.chat).
 
-The website lives at https://eulercalc.netlify.app/.
+The master branch of this repository is deployed at https://eulercalc.netlify.app/.
 
 ## Built With
 EulerCalc is built using [create-react-app](https://github.com/facebook/create-react-app/) and [TypeScript](https://www.typescriptlang.org). 
 ### Notable libraries and frameworks:
-* [react-bootstrap](https://react-bootstrap.github.io) and [bootstrap](https://getbootstrap.com),
+* [react-bootstrap](https://react-bootstrap.github.io) and [bootstrap](https://getbootstrap.com)
 * [Visly](https://visly.app) for component design
-* [Fork](https://github.com/ecuber/jsxgraph-react-js) of [MathQuill](https://mathquill.com) for LaTeX editing and rendering, 
-* [Fork](https://github.com/ecuber/evaluatex) of [evaluatex](https://arthanzel.github.io/evaluatex/) to evaluate math expressions,
-* [JSXGraph](https://jsxgraph.uni-bayreuth.de) for graphing visuals.
+* [Fork](https://github.com/ecuber/jsxgraph-react-js) of [MathQuill](https://mathquill.com) for LaTeX editing and rendering
+* [Fork](https://github.com/ecuber/evaluatex) of [evaluatex](https://arthanzel.github.io/evaluatex/) to evaluate math expressions
+* [JSXGraph](https://jsxgraph.uni-bayreuth.de) for graphing visuals
 
 ## Bugs
 This project is still under development, and bugs (features) are definitely present. If you encounter unexpected behavior, please open an issue in the [issue tracker](https://github.com/ecuber/euler/issues).
@@ -36,8 +36,5 @@ To create a production build:
 $ yarn build
 ```
 
-
-
 ## License
-
 Distributed under the MIT License.
