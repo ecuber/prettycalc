@@ -12,9 +12,9 @@ EulerCalc is built using [create-react-app](https://github.com/facebook/create-r
 ### Notable libraries and frameworks:
 * [react-bootstrap](https://react-bootstrap.github.io) and [bootstrap](https://getbootstrap.com)
 * [Visly](https://visly.app) for component design
-* [Fork](https://github.com/ecuber/jsxgraph-react-js) of [MathQuill](https://mathquill.com) for LaTeX editing and rendering
+* [react-mathquill](https://github.com/viktorstrate/react-mathquill) for LaTeX editing and rendering
 * [Fork](https://github.com/ecuber/evaluatex) of [evaluatex](https://arthanzel.github.io/evaluatex/) to evaluate math expressions
-* [JSXGraph](https://jsxgraph.uni-bayreuth.de) for graphing visuals
+* [JSXGraph](https://jsxgraph.uni-bayreuth.de) for graphing
 
 ## Bugs
 This project is still under development, and bugs (features) are definitely present. If you encounter unexpected behavior, please open an issue in the [issue tracker](https://github.com/ecuber/euler/issues).
