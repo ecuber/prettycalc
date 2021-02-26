@@ -10253,11 +10253,6 @@ react-mathquill@^1.0.1:
   resolved "https://registry.yarnpkg.com/react-mathquill/-/react-mathquill-1.0.1.tgz#3fed290d43a796d4eeac0d6f8cc7f4912689a7eb"
   integrity sha512-r49RWfHPSyEgGDHdq6khOO5MWtqFhDxtrhGNdHxmuwgpx+pB9+NiIF+QolvIyea0FMkVmyzsC6R3jjK8oK6skQ==
 
-react-numeric-input@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/react-numeric-input/-/react-numeric-input-2.2.3.tgz#4bf5918c3eafed851a80df1eb992d941002bb552"
-  integrity sha1-S/WRjD6v7YUagN8euZLZQQArtVI=
-
 react-overlays@^4.1.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-4.1.1.tgz#0060107cbe1c5171a744ccda3fbf0556d064bc5f"
