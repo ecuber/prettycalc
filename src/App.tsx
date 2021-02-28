@@ -54,8 +54,8 @@ class App extends React.Component<{}, AppState> {
           </Col>
         </Row>
       </Container>
-      <div className='footer p-5'>
-        bruh
+      <div className='footer pt-4 pb-3'>
+        <a className='black' href='https://github.com/ecuber/euler'><i className='fab fa-github'></i></a>
       </div>
     </div>
     )

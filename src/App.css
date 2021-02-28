@@ -67,11 +67,20 @@ h3 {
 
 .footer {
   margin-top: 5rem;
-  background-color: #f3f4f5;
+  /* background-color: #f3f4f5; */
 }
 
 .lightfont {
   font-weight: 300;
   color: #D4D4D4;
   line-height: 27px;
+}
+
+.black {
+  color: #535d64;
+  font-size: 30px;
+}
+
+.black:hover {
+  color: #273036;
 }
