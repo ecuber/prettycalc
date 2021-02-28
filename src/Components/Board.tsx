@@ -20,8 +20,11 @@ class Board extends React.Component<BoardData> {
       console.log(slope({ x: evaluatex(this.props.x, {}, { latex: true })(), y: evaluatex(this.props.y, {}, { latex: true })() }))
       start = brd.create('point', [evaluatex(this.props.x, {}, { latex: true })(), evaluatex(this.props.y, {}, { latex: true })()], { withLabel: false, color: '#06A77D', fixed: true })
     } catch (e: any) {
-      start = { X: () => 0, Y: () => 0 }
+      start = { X: () => 1, Y: () => 0 }
     }
+
+    // [left, top, right, bottom]
+    brd.setBoundingBox([start.X() - 5.5, start.Y() + 4.5, start.X() + 3.5, start.Y() - 4.5])
 
     // Renders slope field
     for (let x = Math.floor(start.X() - 10); x < start.X() + 10; x += SPACING) {
@@ -77,6 +80,9 @@ class Board extends React.Component<BoardData> {
         boundingBox: [-4.5, 4.5, 4.5, -4.5]
       }}
       style={{
+        width: '100%',
+        height: 0,
+        paddingBottom: '100%',
         border: '1px solid black',
         borderRadius: '5px',
         showReload: true,

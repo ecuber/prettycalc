@@ -3,7 +3,7 @@
 /* eslint-disable */
 import "./textstyles/fonts.css";
 import "./reset.css";
-import "./IconButton.css";
+import "./CustomIconButton.css";
 import React, { createContext, useContext } from "react";
 import {
   exists,
@@ -147,10 +147,10 @@ const variantPropTypes = [
   },
 ];
 
-export const IconButtonContext = createContext(null);
+export const CustomIconButtonContext = createContext(null);
 
-function IconButton(_props) {
-  const defaults = useContext(IconButtonContext);
+function CustomIconButton(_props) {
+  const defaults = useContext(CustomIconButtonContext);
   const props = { ...defaults, ..._props };
   const activeVariants = findSetVariantProps(variantPropTypes, props);
   const getCompositeDefaultProps = makeCompositeDefaultProps(
@@ -166,7 +166,7 @@ function IconButton(_props) {
         projectId: "7X7HTLRqyD",
         styles: styles,
         layerId: "root",
-        scope: "AHXXCx7dY8",
+        scope: "PnqUUCyqeK",
         activeVariants: activeVariants,
       }}
     >
@@ -174,7 +174,7 @@ function IconButton(_props) {
         <IconPrimitive
           id={"Icon_NFYaQaA7WN"}
           className={
-            "__visly_reset_7X7HTLRqyD __visly_scope_AHXXCx7dY8_NFYaQaA7WN"
+            "__visly_reset_7X7HTLRqyD __visly_scope_PnqUUCyqeK_NFYaQaA7WN"
           }
           key={"NFYaQaA7WN"}
           useMask={getStyle("NFYaQaA7WN", "useMask")}
@@ -185,7 +185,7 @@ function IconButton(_props) {
   );
 }
 
-IconButton.__variants = [
+CustomIconButton.__variants = [
   {
     name: "kind",
     type: "group",
@@ -201,4 +201,4 @@ IconButton.__variants = [
   },
 ];
 
-export default IconButton;
+export default CustomIconButton;
