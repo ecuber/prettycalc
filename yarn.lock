@@ -1149,7 +1149,7 @@
 
 "@ecuber/evaluatex@https://github.com/ecuber/evaluatex.git":
   version "2.2.1"
-  resolved "https://github.com/ecuber/evaluatex.git#38c326ecbebbff752a392a05dac1ff21cf559890"
+  resolved "https://github.com/ecuber/evaluatex.git#fbdc1379888bf8fb69a29974e1d74a317a020d2f"
 
 "@eslint/eslintrc@^0.3.0":
   version "0.3.0"

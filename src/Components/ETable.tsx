@@ -7,7 +7,7 @@ import equal from 'fast-deep-equal'
 interface Props { data: { equation: string, x: string, y: string, delta: number }}
 interface Data { n: number, x: number, y: number, slope: number, delta: number, dy: number }
 
-class ETable extends React.Component<Props, { data: Data[]}> {
+class ETable extends React.Component<Props, { data: { data: Data[], valid: boolean } }> {
   constructor (props: Props) {
     super(props)
     this.state = {
@@ -21,30 +21,36 @@ class ETable extends React.Component<Props, { data: Data[]}> {
     }
   }
 
-  createData (): Data[] {
+  createData (): { data: Data[], valid: boolean } {
+    let valid = true
     const eq = this.props.data
     const delta = eq.delta
-    const fx: number = evaluatex(eq.x)()
-    const fy: number = evaluatex(eq.y)()
-    const slope: (params: { x: number, y: number }) => number = evaluatex(eq.equation)
+    const fx: number = evaluatex(eq.x, {}, { latex: true })()
+    const fy: number = evaluatex(eq.y, {}, { latex: true })()
+    const slope: (params: { x: number, y: number }) => number = evaluatex(eq.equation, {}, { latex: true })
 
     const arr: Data[] = []
     let i = 0
     let x = fx
     let y = fy
     while (i <= 1 / eq.delta) {
-      x = parseFloat((i === 0 ? x : x + delta).toFixed(3))
-      const dydx = parseFloat((slope({ x, y }).toFixed(3)))
-      y = parseFloat((i === 0 ? y : dydx * delta + arr[i - 1].y).toFixed(3))
-      const nextslope = parseFloat((slope({ x: x + delta, y }).toFixed(3)))
-      arr.push({ x, y, delta, slope: dydx, n: i + 1, dy: parseFloat((nextslope * delta).toFixed(3)) })
+      try {
+        x = parseFloat((i === 0 ? x : x + delta).toFixed(3))
+        const dydx = parseFloat((slope({ x, y }).toFixed(3)))
+        y = parseFloat((i === 0 ? y : dydx * delta + arr[i - 1].y).toFixed(3))
+        const nextslope = parseFloat((slope({ x: x + delta, y }).toFixed(3)))
+        arr.push({ x, y, delta, slope: dydx, n: i + 1, dy: parseFloat((nextslope * delta).toFixed(3)) })
+      } catch (e: any) {
+        valid = false
+        break
+      }
       i++
     }
-    return arr
+    return { data: arr, valid }
   }
 
   render (): JSX.Element {
-    const data: Data[] = this.state.data
+    const data: Data[] = this.state.data.data
 
     const columns: Array<{ Header: string, accessor: keyof Data }> = [
       {
@@ -69,7 +75,8 @@ class ETable extends React.Component<Props, { data: Data[]}> {
       }
     ]
 
-    return (
+    return this.state.data.valid
+      ? (
     <Table>
       <thead>
         {
@@ -102,7 +109,8 @@ class ETable extends React.Component<Props, { data: Data[]}> {
         }
       </tbody>
     </Table>
-    )
+        )
+      : <p className='error'>This function is not defined at your starting point. Try changing the initial condition!</p>
   }
 }
 

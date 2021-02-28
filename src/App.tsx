@@ -40,13 +40,13 @@ class App extends React.Component<{}, AppState> {
         <InputArea delta={state.delta} onUpdate={this.onUpdate.bind(this)} equation={state.equation} x={state.x} y={state.y}/>
       </section>
       <img src={wave} style={{ pointerEvents: 'none', userSelect: 'none', display: 'block', margin: 0, padding: 0 }}></img>
-      <Container>
+      <Container fluid="md" className='m-0 mx-lg-auto'>
         <Row xs={1} lg={2}>
-          <Col className='justify-content-center'>
+          <Col className='mx-auto justify-content-center'>
             <h3 className='mb-4'>Graph</h3>
             <Board className='m-auto' equation={state.equation} delta={state.delta} x={state.x} y={state.y}/>
           </Col>
-          <Col className='mt-5 mt-lg-0 justify-content-center align-content-center'>
+          <Col className='mt-5 mx-auto mt-lg-0 justify-content-center align-content-center'>
             <h3 className='mb-4'>Table</h3>
             <ETable data={{ equation: state.equation, x: state.x, y: state.y, delta: state.delta }}/>
           </Col>
