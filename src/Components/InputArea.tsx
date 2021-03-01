@@ -69,7 +69,7 @@ class InputArea extends React.Component<InputProps, InputState> {
           <p className='d-inline-block'>Is something off?</p>
           <OverlayTrigger
             trigger='focus'
-            placement='bottom'
+            placement='auto-end'
             delay={{ show: 250, hide: 400 }}
             overlay={popover}
           >
@@ -94,7 +94,7 @@ class InputArea extends React.Component<InputProps, InputState> {
 
 // Popover has to be defined in the same file to show up correctly for some reason
 const popover = (
-  <Popover style={{ maxWidth: 400 }} id="popover-basic">
+  <Popover style={{ }} id="popover-basic">
     <Popover.Content className='pb-0'>
     <ul className='pl-4 pt-1'>
       <li>
