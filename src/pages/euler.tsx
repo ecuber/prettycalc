@@ -28,6 +28,7 @@ class App extends React.Component<{}, AppState> {
       y: '0',
       delta: 0.3
     }
+    this.graphRef = React.createRef<HTMLHeadingElement>()
   }
 
   onUpdate (props: AppState): void {
@@ -40,13 +41,13 @@ class App extends React.Component<{}, AppState> {
     <div className='App'>
       <section className='section1'>
         <Header/>
-        <InputArea delta={state.delta} onUpdate={this.onUpdate.bind(this)} equation={state.equation} x={state.x} y={state.y}/>
+        <InputArea delta={state.delta} onUpdate={this.onUpdate.bind(this)} equation={state.equation} x={state.x} y={state.y} graphRef={this.graphRef}/>
       </section>
       <img src={wave} style={{ pointerEvents: 'none', userSelect: 'none', display: 'block', margin: 0, padding: 0 }}></img>
       <Container>
         <Row xs={1} lg={2} className='w-100 justify-content-center m-auto'>
           <Col className='mx-auto justify-content-center'>
-            <h3 className='h3 mb-4'>graph</h3>
+            <h3 ref={this.graphRef} className='h3 mb-4'>graph</h3>
             <div className='mw-500'>
               <Board className='' equation={state.equation} delta={state.delta} x={state.x} y={state.y}/>
             </div>

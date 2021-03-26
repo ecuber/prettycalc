@@ -8,7 +8,7 @@ import EquationEditor from './EquationEditor'
 import PointInput from './PointInput'
 import { InputLabel, Card, RoundButton, icons, Slider, SliderValue, CompLabel, IconButton } from './visly'
 
-interface InputProps { delta: number, equation: string, x: string, y: string, onUpdate: (props: { equation: string, x: string, y: string, delta: number }) => void }
+interface InputProps { delta: number, equation: string, x: string, y: string, onUpdate: (props: { equation: string, x: string, y: string, delta: number }) => void, graphRef: React.RefObject<HTMLHeadingElement> }
 interface InputState { delta: { value: number, valid: string }, equation: { valid: string, value: string }, x: { valid: string, value: string }, y: { valid: string, value: string } }
 
 class InputArea extends React.Component<InputProps, InputState> {
@@ -90,6 +90,7 @@ class InputArea extends React.Component<InputProps, InputState> {
           className='m-auto'
           onPress={() => {
             this.props.onUpdate({ equation: this.state.equation.value, x: this.state.x.value, y: this.state.y.value, delta: this.state.delta.value })
+            this.props.graphRef.current?.scrollIntoView()
           }}
           icon={icons.checkmark}
         />
