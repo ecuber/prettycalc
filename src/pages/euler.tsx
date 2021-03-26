@@ -1,13 +1,16 @@
 import React from 'react'
-import './App.css'
-import wave from './Components/wave.svg'
-import { Header } from './Components/visly'
-import InputArea from './Components/InputArea'
-import Board from './Components/Board'
+import '../css/App.css'
+import wave from '../components/wave.svg'
+import { Header, setBreakpoints } from '../components/visly'
+import InputArea from '../components/InputArea'
+import Board from '../components/Board'
 import Col from 'react-bootstrap/esm/Col'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
-import ETable from './Components/ETable'
+import ETable from '../components/ETable'
+import { FaGithub } from 'react-icons/fa'
+
+setBreakpoints('min-width', ['800px', '1200px'])
 
 interface AppState {
   equation: string
@@ -43,19 +46,19 @@ class App extends React.Component<{}, AppState> {
       <Container>
         <Row xs={1} lg={2} className='w-100 justify-content-center m-auto'>
           <Col className='mx-auto justify-content-center'>
-            <h3 className='mb-4'>Graph</h3>
+            <h3 className='h3 mb-4'>graph</h3>
             <div className='mw-500'>
               <Board className='' equation={state.equation} delta={state.delta} x={state.x} y={state.y}/>
             </div>
           </Col>
           <Col className='mt-5 mx-auto mt-lg-0 justify-content-center align-content-center'>
-            <h3 className='mb-4'>Table</h3>
+            <h3 className='h3 mb-4'>table</h3>
             <ETable data={{ equation: state.equation, x: state.x, y: state.y, delta: state.delta }}/>
           </Col>
         </Row>
       </Container>
-      <div className='footer pt-4 pb-3'>
-        <a className='black' href='https://github.com/ecuber/euler'><i className='fab fa-github'></i></a>
+      <div className='footer pt-2 pb-5 d-flex justify-content-center'>
+        <a className='black mx-auto' href='https://github.com/ecuber/euler'><FaGithub/></a>
       </div>
     </div>
     )
