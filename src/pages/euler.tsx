@@ -1,14 +1,13 @@
 import React from 'react'
 import '../css/App.css'
-import wave from '../components/wave.svg'
 import { Header, setBreakpoints } from '../components/visly'
-import InputArea from '../components/InputArea'
-import Board from '../components/euler/Board'
-import Col from 'react-bootstrap/esm/Col'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
-import ETable from '../components/ETable'
+import { Row, Col, Container } from 'react-bootstrap'
 import { FaGithub } from 'react-icons/fa'
+import { Helmet } from 'react-helmet'
+import InputArea from '../components/euler/InputArea'
+import Board from '../components/euler/Board'
+import ETable from '../components/euler/ETable'
+import wave from '../components/wave.svg'
 
 setBreakpoints('min-width', ['800px', '1200px'])
 
@@ -39,6 +38,9 @@ class App extends React.Component<{}, AppState> {
     const state = this.state
     return (
     <div className='App'>
+      <Helmet>
+        <title>EulerCalc</title>
+      </Helmet>
       <section className='section1'>
         <Header/>
         <InputArea delta={state.delta} onUpdate={this.onUpdate.bind(this)} equation={state.equation} x={state.x} y={state.y} graphRef={this.graphRef}/>
@@ -58,8 +60,9 @@ class App extends React.Component<{}, AppState> {
           </Col>
         </Row>
       </Container>
-      <div className='footer pt-2 pb-5 d-flex justify-content-center'>
+      <div className='footer pt-2 pb-5 d-flex flex-column align-contents-center justify-content-center'>
         <a className='black mx-auto' href='https://github.com/ecuber/euler'><FaGithub/></a>
+        <p className='lightfont'>github</p>
       </div>
     </div>
     )
