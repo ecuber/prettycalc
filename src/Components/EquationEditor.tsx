@@ -4,7 +4,7 @@ import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
 
 addStyles()
 
-interface EqProps { equation: string, onChange: (name: string, updates: { value?: string, valid: string }) => void }
+interface EqProps { equation: string, n: boolean, onChange: (name: string, updates: { value?: string, valid: string }) => void }
 
 class EquationEditor extends React.Component<EqProps, { equation: string, valid: boolean }> {
   constructor (props: EqProps) {
@@ -24,9 +24,9 @@ class EquationEditor extends React.Component<EqProps, { equation: string, valid:
         onChange={(mathField) => {
           let isValid: boolean = true
           try {
-            evaluatex(mathField.latex(), { x: 0, y: 0 }, { latex: true })()
+            evaluatex(mathField.latex(), this.props.n ? { n: 0 } : { x: 0, y: 0 }, { latex: true })()
           } catch (e) {
-            console.log('invalid expression')
+            // console.log('invalid expression')
             isValid = false
           }
           // console.log(this.formatTex(mathField.latex()))
@@ -34,16 +34,16 @@ class EquationEditor extends React.Component<EqProps, { equation: string, valid:
           if (isValid) {
             this.props.onChange('equation', { value: mathField.latex(), valid: 'true' })
           } else {
-            this.props.onChange('equation', { valid: 'false' })
+            this.props.onChange('equation', { value: mathField.latex(), valid: 'false' })
           }
         }}
         config={{
-          autoCommands: 'pi sqrt nthroot',
+          autoCommands: 'pi sqrt nthroot infinity',
           autoOperatorNames: 'sin cos tan sec arctan arccos arcsin csc cot ln log',
           spaceBehavesLikeTab: true,
           autoSubscriptNumerals: false,
           supSubsRequireOperand: true,
-          sumStartsWithNEquals: true,
+          sumStartsWithNEquals: false,
           maxDepth: 10
         }}
       />

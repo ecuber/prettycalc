@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticMathField, addStyles } from 'react-mathquill'
-import NumInput from './NumInput'
+import NumInput from '../NumInput'
 
 addStyles()
 

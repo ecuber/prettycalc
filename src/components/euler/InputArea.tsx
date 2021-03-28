@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Popover from 'react-bootstrap/Popover'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import { StaticMathField } from 'react-mathquill'
-import EquationEditor from './EquationEditor'
+import EquationEditor from '../EquationEditor'
 import PointInput from './PointInput'
 import { InputLabel, Card, RoundButton, icons, Slider, SliderValue, CompLabel, IconButton } from './visly'
 
