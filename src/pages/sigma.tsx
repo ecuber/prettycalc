@@ -37,7 +37,7 @@ const Sigma: React.FC = (props) => {
     </header>
     <img src={wave} style={{ pointerEvents: 'none', userSelect: 'none', display: 'block', margin: 0, marginBottom: '-2rem' }}></img>
     <section>
-      <Container maxW='90vw' paddingTop={3} marginX='auto' centerContent>
+      <Container maxW='90vw' h='100%' paddingTop={3} marginX='auto' centerContent>
         <DisplayArea n={n} lim={lim} equation={equation}/>
       </Container>
     </section>
