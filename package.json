@@ -13,7 +13,7 @@
     "@sswatson/jsxgraph-react-js": "https://github.com/ecuber/jsxgraph-react-js",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+    "@testing-library/user-event": "^13.0.16",
     "@visly/core": "^1.0.10",
     "bootstrap": "^5.0.0-beta3",
     "fast-deep-equal": "^3.1.3",
