@@ -31,7 +31,7 @@ class ETable extends React.Component<Props, { data: { data: Data[], valid: boole
       fx = evaluatex(eq.x, {}, { latex: true })()
       fy = evaluatex(eq.y, {}, { latex: true })()
     } catch (e) {
-      console.error(e)
+      valid = false
     }
 
     const slope: (params: { x: number, y: number }) => number = evaluatex(eq.equation, {}, { latex: true })
