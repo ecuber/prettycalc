@@ -34,7 +34,7 @@ const DisplayArea: React.FC = (props: DisplayProps) => {
     if (props.n !== state.n) {
       setState({ ...state, sequence: evalSequence(state.fn, props.n, state.lim), n: props.n })
     } else if (props.lim !== state.lim) {
-      setState({ ...state, sequence: evalSequence(state.fn, state.n, props.lim), lim: props.lim})
+      setState({ ...state, sequence: evalSequence(state.fn, state.n, props.lim), lim: props.lim })
     }
   }
 
@@ -48,7 +48,7 @@ const DisplayArea: React.FC = (props: DisplayProps) => {
         // const style = { fontSize: `${2 - i / (props.lim - props.n + 1.4)}rem` }
         const style = { fontSize: '1.5rem', animationDelay: (props.lim - props.n) >= 500 ? '0s' : `${0.2 + i / (14 + (props.lim - props.n) / 15)}s` }
         return <span aria-hidden='true' key={i} style={style}>
-          {`${n % 1 !== 0 ? n.toPrecision(7) : n}${i !== state.sequence.length - 1 ? ', ' : ''}`}
+          {`${n < 1 ? '(' : ''}${n % 1 !== 0 ? n.toPrecision(7) : n}${n < 1 ? ')' : ''}${i !== state.sequence.length - 1 ? ' + ' : ''}`}
         </span>
       }
       )}
