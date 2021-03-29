@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "build": "yarn install && gatsby build",
     "serve": "gatsby serve"
   },
   "eslintConfig": {
