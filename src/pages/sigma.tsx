@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Box, Container } from '@chakra-ui/react'
 import loadable from '@loadable/component'
 import wave from '../components/wave.svg'
+import { Helmet } from 'react-helmet'
 const EquationEditor = loadable(() => import('../components/EquationEditor'))
 const SigmaEditor = loadable(() => import('../components/sigma/SigmaEditor'))
 const DisplayArea = loadable(() => import('../components/sigma/DisplayArea'))
@@ -28,6 +29,9 @@ const Sigma: React.FC = (props) => {
   // console.log('lim', lim)
 
   return <>
+    <Helmet>
+        <title>SigmaCalc</title>
+    </Helmet>
     <header style={{ backgroundColor: '#f3f4f5' }}>
       <Container paddingBottom={6} centerContent>
         <Header/>
