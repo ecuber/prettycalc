@@ -8,6 +8,7 @@
     "@ecuber/evaluatex": "https://github.com/ecuber/evaluatex.git",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@loadable/component": "^5.14.1",
     "@popperjs/core": "^2.9.1",
     "@sswatson/jsxgraph-react-js": "https://github.com/ecuber/jsxgraph-react-js",
     "@testing-library/jest-dom": "^5.11.4",

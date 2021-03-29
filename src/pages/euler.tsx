@@ -1,13 +1,15 @@
+/* eslint-disable @typescript-eslint/promise-function-async */
 import React from 'react'
 import '../css/App.css'
 import { Header, setBreakpoints } from '../components/visly'
 import { Row, Col, Container } from 'react-bootstrap'
 import { FaGithub } from 'react-icons/fa'
 import { Helmet } from 'react-helmet'
-import InputArea from '../components/euler/InputArea'
+import loadable from '@loadable/component'
 import Board from '../components/euler/Board'
 import ETable from '../components/euler/ETable'
 import wave from '../components/wave.svg'
+const InputArea = loadable(() => import ('../components/euler/InputArea'))
 
 setBreakpoints('min-width', ['800px', '1200px'])
 

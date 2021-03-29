@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/promise-function-async */
 import React, { useState } from 'react'
 import { Box, Container } from '@chakra-ui/react'
-import EquationEditor from '../components/EquationEditor'
-import Header from '../components/sigma/Header'
+import loadable from '@loadable/component'
 import wave from '../components/wave.svg'
-import SigmaEditor from '../components/sigma/SigmaEditor'
-import DisplayArea from '../components/sigma/DisplayArea'
+const EquationEditor = loadable(() => import('../components/EquationEditor'))
+const SigmaEditor = loadable(() => import('../components/sigma/SigmaEditor'))
+const DisplayArea = loadable(() => import('../components/sigma/DisplayArea'))
+const Header = loadable(() => import('../components/sigma/Header'))
 
 const Sigma: React.FC = (props) => {
   const [equation, setEquation] = useState('(-1)^n')
@@ -21,9 +23,9 @@ const Sigma: React.FC = (props) => {
     }
   }
 
-  console.log('eq', equation)
-  console.log('n', n)
-  console.log('lim', lim)
+  // console.log('eq', equation)
+  // console.log('n', n)
+  // console.log('lim', lim)
 
   return <>
     <header style={{ backgroundColor: '#f3f4f5' }}>
