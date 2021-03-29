@@ -16,7 +16,7 @@
     "@visly/core": "^1.0.10",
     "bootstrap": "^4.6.0",
     "fast-deep-equal": "^3.1.3",
-    "jquery": "^3.5.1",
+    "jquery": "^3.6.0",
     "jsxgraph-react-js": "^1.0.4",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
