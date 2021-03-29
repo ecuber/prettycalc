@@ -5,7 +5,7 @@
   "dependencies": {
     "@ecuber/evaluatex": "https://github.com/ecuber/evaluatex.git",
     "@sswatson/jsxgraph-react-js": "https://github.com/ecuber/jsxgraph-react-js",
-    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
