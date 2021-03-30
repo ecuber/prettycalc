@@ -17,7 +17,7 @@ class Board extends React.Component<BoardData> {
     let start
 
     try {
-      console.log(slope({ x: evaluatex(this.props.x, {}, { latex: true })(), y: evaluatex(this.props.y, {}, { latex: true })() }))
+      slope({ x: evaluatex(this.props.x, {}, { latex: true })(), y: evaluatex(this.props.y, {}, { latex: true })() })
       start = brd.create('point', [evaluatex(this.props.x, {}, { latex: true })(), evaluatex(this.props.y, {}, { latex: true })()], { withLabel: false, color: '#06A77D', fixed: true })
     } catch (e: any) {
       start = { X: () => 1, Y: () => 0 }

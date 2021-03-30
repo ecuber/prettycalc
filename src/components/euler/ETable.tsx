@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/promise-function-async */
 /* eslint-disable react/jsx-key */
 import React from 'react'
 import Table from 'react-bootstrap/Table'
-import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
 import equal from 'fast-deep-equal'
+import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
 
 interface Props { data: { equation: string, x: string, y: string, delta: number }}
 interface Data { n: number, x: number, y: number, slope: number, delta: number, dy: number }
@@ -11,8 +12,12 @@ class ETable extends React.Component<Props, { data: { data: Data[], valid: boole
   constructor (props: Props) {
     super(props)
     this.state = {
-      data: this.createData()
+      data: new Array<Data>()
     }
+  }
+
+  componentDidMount (): void {
+    this.setState({ data: this.createData() })
   }
 
   componentDidUpdate (prevProps: Props): void {
@@ -25,8 +30,15 @@ class ETable extends React.Component<Props, { data: { data: Data[], valid: boole
     let valid = true
     const eq = this.props.data
     const delta = eq.delta
-    const fx: number = evaluatex(eq.x, {}, { latex: true })()
-    const fy: number = evaluatex(eq.y, {}, { latex: true })()
+    let fx = 0
+    let fy = 0
+    try {
+      fx = evaluatex(eq.x, {}, { latex: true })()
+      fy = evaluatex(eq.y, {}, { latex: true })()
+    } catch (e) {
+      valid = false
+    }
+
     const slope: (params: { x: number, y: number }) => number = evaluatex(eq.equation, {}, { latex: true })
 
     const arr: Data[] = []
@@ -82,8 +94,8 @@ class ETable extends React.Component<Props, { data: { data: Data[], valid: boole
         {
           <tr>
             {
-              columns.map(column => (
-                <th>
+              columns.map((column, i) => (
+                <th key={`head-${i}`}>
                   {column.Header}
                 </th>
               ))
@@ -93,12 +105,12 @@ class ETable extends React.Component<Props, { data: { data: Data[], valid: boole
       </thead>
       <tbody>
         {
-          data.map(row => {
+          data.map((row, i) => {
             return (
-              <tr>
+              <tr key={`row-${i}`}>
                 {
-                  columns.map(column => (
-                    <td>
+                  columns.map((column, j) => (
+                    <td key={`col-${j}`}>
                       {row[column.accessor]}
                     </td>
                   ))

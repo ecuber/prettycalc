@@ -43,6 +43,10 @@ class EquationEditor extends React.Component<Num, { value: string, valid: boolea
           this.setState({ valid: isValid })
         }
       }}
+      config={{
+        autoCommands: 'pi sqrt nthroot',
+        autoOperatorNames: 'sin cos tan sec arctan arccos arcsin csc cot ln log'
+      }}
     />
     )
   }
