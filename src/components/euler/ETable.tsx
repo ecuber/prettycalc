@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/promise-function-async */
 /* eslint-disable react/jsx-key */
 import React from 'react'
 import Table from 'react-bootstrap/Table'
-import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
 import equal from 'fast-deep-equal'
+import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
 
 interface Props { data: { equation: string, x: string, y: string, delta: number }}
 interface Data { n: number, x: number, y: number, slope: number, delta: number, dy: number }
@@ -11,8 +12,12 @@ class ETable extends React.Component<Props, { data: { data: Data[], valid: boole
   constructor (props: Props) {
     super(props)
     this.state = {
-      data: this.createData()
+      data: new Array<Data>()
     }
+  }
+
+  componentDidMount (): void {
+    this.setState({ data: this.createData() })
   }
 
   componentDidUpdate (prevProps: Props): void {
