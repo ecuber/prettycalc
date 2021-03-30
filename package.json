@@ -37,7 +37,8 @@
   "scripts": {
     "start": "gatsby develop",
     "build": "yarn install && gatsby build",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
   },
   "eslintConfig": {
     "extends": [

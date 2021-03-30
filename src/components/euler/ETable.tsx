@@ -89,8 +89,8 @@ class ETable extends React.Component<Props, { data: { data: Data[], valid: boole
         {
           <tr>
             {
-              columns.map(column => (
-                <th>
+              columns.map((column, i) => (
+                <th key={`head-${i}`}>
                   {column.Header}
                 </th>
               ))
@@ -100,12 +100,12 @@ class ETable extends React.Component<Props, { data: { data: Data[], valid: boole
       </thead>
       <tbody>
         {
-          data.map(row => {
+          data.map((row, i) => {
             return (
-              <tr>
+              <tr key={`row-${i}`}>
                 {
-                  columns.map(column => (
-                    <td>
+                  columns.map((column, j) => (
+                    <td key={`col-${j}`}>
                       {row[column.accessor]}
                     </td>
                   ))
