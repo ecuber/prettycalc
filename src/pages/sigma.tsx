@@ -10,8 +10,8 @@ const DisplayArea = loadable(() => import('../components/sigma/DisplayArea'))
 const Header = loadable(() => import('../components/sigma/Header'))
 
 const Sigma: React.FC = (props) => {
-  const [equation, setEquation] = useState('(-1)^n')
-  const [n, setN] = useState(1)
+  const [equation, setEquation] = useState('\\frac{1}{n!}')
+  const [n, setN] = useState(0)
   const [lim, setLim] = useState(10)
 
   const handleChange = (type: string, args: { value: string, valid: string}): void => {
