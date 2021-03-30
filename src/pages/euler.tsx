@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/promise-function-async */
-import React from 'react'
+import React, { Suspense } from 'react'
 import '../css/App.css'
 import { Header, setBreakpoints } from '../components/visly'
 import { Row, Col, Container } from 'react-bootstrap'
+import { Spinner } from '@chakra-ui/react'
 import { FaGithub } from 'react-icons/fa'
 import { Helmet } from 'react-helmet'
 import loadable from '@loadable/component'
-import Board from '../components/euler/Board'
-import ETable from '../components/euler/ETable'
 import wave from '../components/wave.svg'
 const InputArea = loadable(() => import ('../components/euler/InputArea'))
+const Board = loadable(() => import('../components/euler/Board'))
+const ETable = loadable(() => import('../components/euler/ETable'))
 
 setBreakpoints('min-width', ['800px', '1200px'])
 
@@ -19,6 +20,14 @@ interface AppState {
   y: string
   delta: number
 }
+
+const Loading = <Spinner
+  thickness='6px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='#06a77c'
+  size='xl'
+  />
 
 class App extends React.Component<{}, AppState> {
   constructor (props: any) {
@@ -38,6 +47,7 @@ class App extends React.Component<{}, AppState> {
 
   render (): JSX.Element {
     const state = this.state
+    const isSSR = typeof window === 'undefined'
     return (
     <div className='App'>
       <Helmet>
@@ -50,15 +60,18 @@ class App extends React.Component<{}, AppState> {
       <img src={wave} style={{ pointerEvents: 'none', userSelect: 'none', display: 'block', margin: 0, padding: 0 }}></img>
       <Container>
         <Row xs={1} lg={2} className='w-100 justify-content-center m-auto'>
-          <Col className='mx-auto justify-content-center'>
+          <Col clasxsName='mx-auto justify-content-center'>
             <h3 ref={this.graphRef} className='h3 mb-4'>graph</h3>
             <div className='mw-500'>
-              <Board className='' equation={state.equation} delta={state.delta} x={state.x} y={state.y}/>
+              {!isSSR &&
+                <Suspense fallback={Loading}>
+                  <Board className='' equation={state.equation} delta={state.delta} x={state.x} y={state.y}/>
+                </Suspense>}
             </div>
           </Col>
           <Col className='mt-5 mx-auto mt-lg-0 justify-content-center align-content-center'>
             <h3 className='h3 mb-4'>table</h3>
-            <ETable data={{ equation: state.equation, x: state.x, y: state.y, delta: state.delta }}/>
+              <ETable data={{ equation: state.equation, x: state.x, y: state.y, delta: state.delta }}/>
           </Col>
         </Row>
       </Container>
