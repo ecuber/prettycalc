@@ -8,6 +8,13 @@ import InputArea from '../components/sigma/InputArea'
 const DisplayArea = loadable(() => import('../components/sigma/DisplayArea'))
 const Header = loadable(() => import('../components/sigma/Header'))
 
+const waveStyles = {
+  pointerEvents: 'none',
+  userSelect: 'none',
+  display: 'block',
+  margin: 0
+}
+
 const Sigma: React.FC = (props) => {
   const [equation, setEquation] = useState('\\frac{1}{n!}')
   const [n, setN] = useState(0)
@@ -23,10 +30,6 @@ const Sigma: React.FC = (props) => {
     }
   }
 
-  // console.log('eq', equation)
-  // console.log('n', n)
-  // console.log('lim', lim)
-
   return <>
     <Helmet>
         <title>SigmaCalc</title>
@@ -37,12 +40,16 @@ const Sigma: React.FC = (props) => {
         <InputArea handleChange={handleChange} equation={equation}/>
       </Container>
     </header>
-    <img src={wave} style={{ pointerEvents: 'none', userSelect: 'none', display: 'block', margin: 0, marginBottom: '-2rem' }}></img>
+    <img src={wave} style={waveStyles}></img>
     <section>
-      <Container maxW='90vw' h='100%' paddingTop={3} marginX='auto' centerContent>
+      <Container maxW='90vw' h='100%' mx='auto' centerContent>
         <DisplayArea n={n} lim={lim} equation={equation}/>
       </Container>
     </section>
+    <footer>
+      <Container mt={10} p={3} centerContent>
+      </Container>
+    </footer>
   </>
 }
 

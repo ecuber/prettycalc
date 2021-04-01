@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import evaluatex from '@ecuber/evaluatex/dist/evaluatex'
-import { StaticMathField } from 'react-mathquill'
 import { Box, Container } from '@chakra-ui/layout'
 
 interface DisplayProps {
@@ -39,14 +38,16 @@ const DisplayArea: React.FC = (props: DisplayProps) => {
   }
 
   return <Container maxW='100%' maxH='100%' centerContent>
-    <span style={{ fontSize: 23, marginBottom: 10 }}>
-      <StaticMathField>{`=${state.sequence.length > 0 ? state.sequence.reduce((a, b) => a + b) : 0}`}</StaticMathField>
-    </span>
-    <Box flex h='100%' centerContent alignContent='center'>
+    <Box minW='300px' padding={8} mb={3} shadow='lg' bg='#f3f4f5' borderRadius='lg' d='flex' alignItems='center' justifyContent='center'>
+      <span style={{ fontSize: 23 }}>
+        <strong>{`=${state.sequence.length > 0 ? state.sequence.reduce((a, b) => a + b) : 0}`}</strong>
+      </span>
+    </Box>
+    <Box flex mt={10} h='100%' centerContent alignContent='center'>
       <p key={state.sequence.toString()}>
       {state.sequence.map((n, i) => {
         // const style = { fontSize: `${2 - i / (props.lim - props.n + 1.4)}rem` }
-        const style = { fontSize: '1.5rem', animationDelay: (props.lim - props.n) >= 500 ? '0s' : `${0.2 + i / (14 + (props.lim - props.n) / 15)}s` }
+        const style = { fontSize: '1.5rem', animationDelay: (props.lim - props.n) >= 500 ? null : `${0.2 + i / (14 + (props.lim - props.n) / 15)}s` }
         return <span aria-hidden='true' key={i} style={style}>
           {`${n < 1 ? '(' : ''}${n % 1 !== 0 ? n.toPrecision(7) : n}${n < 1 ? ')' : ''}${i !== state.sequence.length - 1 ? ' + ' : ''}`}
         </span>
