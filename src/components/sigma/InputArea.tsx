@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/promise-function-async */
 import React, { useState } from 'react'
 import { Box } from '@chakra-ui/react'
-import EquationEditor from '../EquationEditor'
-import SigmaEditor from './SigmaEditor'
+import loadable from '@loadable/component'
+const EquationEditor = loadable(() => import('../EquationEditor'))
+const SigmaEditor = loadable(() => import('./SigmaEditor'))
 
 const InputArea: React.FC = (props: { handleChange: (variable: string, value: string) => void, equation: string }) => {
   const [equation, setEquation] = useState(props.equation)
