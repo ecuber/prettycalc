@@ -49,7 +49,7 @@ const DisplayArea: React.FC = (props: DisplayProps) => {
         // const style = { fontSize: `${2 - i / (props.lim - props.n + 1.4)}rem` }
         const style = { fontSize: '1.5rem', animationDelay: (props.lim - props.n) >= 500 ? null : `${0.2 + i / (14 + (props.lim - props.n) / 15)}s` }
         return <span aria-hidden='true' key={i} style={style}>
-          {`${n < 1 ? '(' : ''}${n % 1 !== 0 ? n.toPrecision(7) : n}${n < 1 ? ')' : ''}${i !== state.sequence.length - 1 ? ' + ' : ''}`}
+          {`${n < 0 ? '(' : ''}${n % 1 !== 0 ? n.toPrecision(7) : n}${n < 0 ? ')' : ''}${i !== state.sequence.length - 1 ? ' + ' : ''}`}
         </span>
       }
       )}
