@@ -55,7 +55,14 @@ class App extends React.Component<{}, AppState> {
       </Helmet>
       <section className='section1'>
         <Header/>
-        <InputArea delta={state.delta} onUpdate={this.onUpdate.bind(this)} equation={state.equation} x={state.x} y={state.y} graphRef={this.graphRef}/>
+        <InputArea
+          delta={state.delta}
+          onUpdate={this.onUpdate.bind(this)}
+          equation={state.equation}
+          x={state.x}
+          y={state.y}
+          graphRef={this.graphRef}
+        />
       </section>
       <img src={wave} style={{ pointerEvents: 'none', userSelect: 'none', display: 'block', margin: 0, padding: 0 }}></img>
       <Container>
